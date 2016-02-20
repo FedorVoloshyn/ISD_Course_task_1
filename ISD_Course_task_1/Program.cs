@@ -14,24 +14,25 @@ namespace ISD_Course_task_1
 
             while(chosen_exersise != 0)
             {
-                Console.WriteLine("\tISD Course. Homework by Fedor Voloshyn\n");
-                Console.WriteLine("1. Task with name");
-                Console.WriteLine("2. Tasks with conditional operators");
-                Console.WriteLine("3. Tasks with cycles");
+                Console.WriteLine("\tISD Course. Homework by Fedor Voloshyn.\n");
+                Console.WriteLine("1. Task with name.");
+                Console.WriteLine("2. Tasks with conditional operators.");
+                Console.WriteLine("3. Tasks with cycles.");
                 Console.WriteLine("Enter number of section or '0' to exit: ");
                 chosen_exersise = Convert.ToInt32(Console.ReadLine());
+                Console.Clear();
                 
                 switch (chosen_exersise)
                 {
                     case 0: Console.WriteLine("Have a nice day!");
                         break;
-                    case 1: Console.WriteLine("Enter your name: ");
+                    case 1: Console.WriteLine("\tTask with name\nEnter your name: ");
                         TheTaskWithName(Console.ReadLine());
                         break;
-                    case 2: Console.WriteLine("Enter number of exercise: ");
+                    case 2: Console.WriteLine("\tTasks with conditional operators\nEnter number of exercise: ");
                         TheTaskWithConditionalOperators(Convert.ToInt32(Console.ReadLine()));
                         break;
-                    case 3: Console.WriteLine("Enter number of exercise: ");
+                    case 3: Console.WriteLine("\tTasks with cycles\nEnter number of exercise: ");
                         TheTaskWithCicles(Convert.ToInt32(Console.ReadLine()));
                         break;
                     default: Console.WriteLine("Looks like you entered wrong number! Try again ;)");
@@ -78,14 +79,174 @@ namespace ISD_Course_task_1
                     int second_number = Convert.ToInt32(Console.ReadLine());
                     Console.WriteLine("Bigger number is {0}", first_number > second_number ? first_number : second_number);
                     break;
+
                 case 2: Console.WriteLine("Enter animal's speach: ");
                     string animals_speach = Console.ReadLine();
                     if (animals_speach == "мяу")
                         Console.WriteLine("Покорми кота");
                     else if (animals_speach == "гав")
-                        Console.WriteLine("Выгуляй кота");
+                        Console.WriteLine("Выгуляй собаку");
                     else Console.WriteLine("Unknown animal speach");
                     break;
+
+                case 3: Console.WriteLine("Enter number of month: ");
+                    switch(Convert.ToInt32(Console.ReadLine()))
+                    {
+                        case 1: 
+                        case 2:
+                        case 12: Console.WriteLine("Winter");
+                            break;
+                        case 3:
+                        case 4:
+                        case 5: Console.WriteLine("Spring");
+                            break;
+                        case 6:
+                        case 7:
+                        case 8: Console.WriteLine("Summer");
+                            break;
+                        case 9:
+                        case 10:
+                        case 11: Console.WriteLine("Autumn");
+                            break;
+                        default: Console.WriteLine("There is no such month on this planet!");
+                            break;
+                    }
+                    break;
+
+                case 4: Console.WriteLine("Enter number: ");
+                    int number = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("{0}", number == 1 ? "Хорошо" : (number == 0 ? "Плохо" : "Не понятно"));
+                    break;
+
+                case 5: Console.WriteLine("Enter number from 1 to 7: ");
+                    int num = Convert.ToInt32(Console.ReadLine());
+                    if (num > 0 && num < 8)
+                    {
+                        switch(num)
+                        {
+                            case 1: Console.WriteLine("Monday");
+                                break;
+                            case 2: Console.WriteLine("Tuesday");
+                                break;
+                            case 3: Console.WriteLine("Wednesday");
+                                break;
+                            case 4: Console.WriteLine("Thursday");
+                                break;
+                            case 5: Console.WriteLine("Friday");
+                                break;
+                            case 6: Console.WriteLine("Saturday");
+                                break;
+                            case 7: Console.WriteLine("Sunday");
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Wrong number!");
+                    break;
+
+                case 6: Console.WriteLine("Enter number of km: ");
+                    double km = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Enter number of minutes of inactivity: ");
+                    double minutes = Convert.ToDouble(Console.ReadLine());
+                    double price = 0;
+                    if (km > 0 && minutes > 0)
+                    {
+                        price += km > 5 ? 20 + (km - 5) * 3 : 20;
+                        price += minutes;
+                        Console.WriteLine("Price: {0} UAH", price);
+                    }
+                    else
+                        Console.WriteLine("Wrong data!");
+                    break;
+
+                case 7: Console.WriteLine("Enter natural number: ");
+                    int natural_number = Convert.ToInt32(Console.ReadLine());
+                    if(natural_number > 0)
+                    {
+                        if (natural_number > 3)
+                        {
+                            for (int i = 2; i <= Math.Sqrt(natural_number); i++)
+                            {
+                                if (natural_number % i == 0)
+                                {
+                                    Console.WriteLine("'{0}' is not simple number!", natural_number);
+                                    break;
+                                }
+                                else if (i == Convert.ToInt32(Math.Truncate(Math.Sqrt(natural_number))))
+                                    Console.WriteLine("'{0}' is simple number!", natural_number);
+                            }
+                        }
+                        else if(natural_number > 1 && natural_number < 4)
+                            Console.WriteLine("'{0}' is simple number!", natural_number);
+                        else
+                            Console.WriteLine("'{0}' is not simple number!", natural_number);
+                    }
+                    else
+                        Console.WriteLine("It is not natural number!");
+                    break;
+
+                case 8: Console.WriteLine("Enter your parlay: ");
+                    double parlay = Convert.ToDouble(Console.ReadLine());
+                    if (parlay > 0)
+                    {
+                        Random Rand = new Random();
+                        int cube = Rand.Next(1, 13);
+                        switch (cube)
+                        {
+                            case 1:
+                            case 2:
+                            case 3:
+                            case 4:
+                            case 5:
+                                Console.WriteLine("{0}, you lost!", cube);
+                                break;
+                            case 6:
+                            case 7:
+                            case 8:
+                                Console.WriteLine("{0}, you win {1}.", cube, parlay);
+                                break;
+                            case 9:
+                            case 10:
+                            case 11:
+                                Console.WriteLine("{0}, you win {1}.", cube, parlay * 2);
+                                break;
+                            case 12:
+                                Console.WriteLine("{0}, you win {1}", cube, parlay * 10);
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Incorrect parlay!");
+                    break;
+
+                case 9: Console.WriteLine("Enter your summ: ");
+                    double summ = Convert.ToDouble(Console.ReadLine());
+                    Console.WriteLine("Enter number of your currency: ");
+                    Console.WriteLine("1. UAH");
+                    Console.WriteLine("2. USD");
+                    Console.WriteLine("3. EUR");
+                    int currency = Convert.ToInt32(Console.ReadLine());
+                    if (summ > 0)
+                    {
+                        switch (currency)
+                        {
+                            case 1: Console.WriteLine("{0} UAH = {1} USD", summ, summ / 8.0);
+                                Console.WriteLine("{0} UAH = {1} EUR", summ, summ / 10.0);
+                                break;
+                            case 2: Console.WriteLine("{0} USD = {1} UAH", summ, summ * 8.0);
+                                Console.WriteLine("{0} USD = {1} EUR", summ, summ / 1.25);
+                                break;
+                            case 3: Console.WriteLine("{0} EUR = {1} UAH", summ, summ * 10.0);
+                                Console.WriteLine("{0} EUR = {1} USD", summ, summ * 1.25);
+                                break;
+                            default: Console.WriteLine("Error: wrong number.");
+                                break;
+                        }
+                    }
+                    else
+                        Console.WriteLine("Summ can't be negative!");
+                    break;
+
                 default: Console.WriteLine("Wrong exercise number!");
                     break;
             }
