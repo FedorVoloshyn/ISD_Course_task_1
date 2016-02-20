@@ -190,28 +190,28 @@ namespace ISD_Course_task_1
                     if (parlay > 0)
                     {
                         Random Rand = new Random();
-                        int cube = Rand.Next(1, 13);
-                        switch (cube)
+                        int sqr = Rand.Next(1, 13);
+                        switch (sqr)
                         {
                             case 1:
                             case 2:
                             case 3:
                             case 4:
                             case 5:
-                                Console.WriteLine("{0}, you lost!", cube);
+                                Console.WriteLine("{0}, you lost!", sqr);
                                 break;
                             case 6:
                             case 7:
                             case 8:
-                                Console.WriteLine("{0}, you win {1}.", cube, parlay);
+                                Console.WriteLine("{0}, you win {1}.", sqr, parlay);
                                 break;
                             case 9:
                             case 10:
                             case 11:
-                                Console.WriteLine("{0}, you win {1}.", cube, parlay * 2);
+                                Console.WriteLine("{0}, you win {1}.", sqr, parlay * 2);
                                 break;
                             case 12:
-                                Console.WriteLine("{0}, you win {1}", cube, parlay * 10);
+                                Console.WriteLine("{0}, you win {1}", sqr, parlay * 10);
                                 break;
                         }
                     }
@@ -256,8 +256,56 @@ namespace ISD_Course_task_1
         {
             switch (exercise_number)
             {
-                case 1:
+                case 1: Console.WriteLine("Enter N: ");
+                    int N = Convert.ToInt32(Console.ReadLine());
+                    for (int i = 1; i <= 20; i++)
+                        Console.WriteLine("{0} * {1} = {2}", N, i, N*i);
                     break;
+
+                case 2: Console.WriteLine("Enter number: ");
+                    int number = Convert.ToInt32(Console.ReadLine());
+                    int count = 0;
+                    do
+                    {
+                        number /= 10;
+                        count++;
+                    } while (Math.Abs(number) > 0);
+                    Console.WriteLine("The rank of entered number = {0}", count);
+                    break;
+
+                case 3: Console.WriteLine("Enter your number: ");
+                    int variant = Convert.ToInt32(Console.ReadLine());
+                    Random rand = new Random();
+                    int real_number = rand.Next(1, 147);
+                    while(variant != real_number)
+                    {
+                        if (variant > real_number)
+                            Console.WriteLine("Number is less than yours");
+                        else if(variant < real_number)
+                            Console.WriteLine("Number is bigger than yours");
+                        variant = Convert.ToInt32(Console.ReadLine());
+                    }
+                    Console.WriteLine("Correct! ({0}, {1})", variant, real_number);
+                    break;
+
+                case 4: Console.WriteLine("Enter your number: ");
+                    int max_value = Convert.ToInt32(Console.ReadLine());
+                    int sqr = 1;
+                    if (max_value > 1)
+                    {
+                        while (sqr * sqr < max_value)
+                        {
+                            Console.WriteLine("{0} * {0} = {1}", sqr, sqr * sqr);
+                            sqr++;
+                        }
+                    }
+                    else
+                        Console.WriteLine("No one sqr less then entered value.");
+                    break;
+
+                case 5:
+                    break;
+
                 default: Console.WriteLine("Wrong exercise number!");
                     break;
             }
