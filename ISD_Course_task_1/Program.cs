@@ -71,6 +71,7 @@ namespace ISD_Course_task_1
 
         static void TheTaskWithConditionalOperators(int exercise_number)
         {
+            Random Rand = new Random();
             switch(exercise_number)
             {
                 case 1: Console.WriteLine("Enter first number: ");
@@ -189,7 +190,6 @@ namespace ISD_Course_task_1
                     double parlay = Convert.ToDouble(Console.ReadLine());
                     if (parlay > 0)
                     {
-                        Random Rand = new Random();
                         int sqr = Rand.Next(1, 13);
                         switch (sqr)
                         {
@@ -254,6 +254,7 @@ namespace ISD_Course_task_1
 
         static void TheTaskWithCicles(int exercise_number)
         {
+            Random Rand = new Random();
             switch (exercise_number)
             {
                 case 1: Console.WriteLine("Enter N: ");
@@ -275,8 +276,7 @@ namespace ISD_Course_task_1
 
                 case 3: Console.WriteLine("Enter your number: ");
                     int variant = Convert.ToInt32(Console.ReadLine());
-                    Random rand = new Random();
-                    int real_number = rand.Next(1, 147);
+                    int real_number = Rand.Next(1, 147);
                     while(variant != real_number)
                     {
                         if (variant > real_number)
@@ -304,6 +304,46 @@ namespace ISD_Course_task_1
                     break;
 
                 case 5:
+                    {
+                        Console.WriteLine("Enter 5 numbers: ");
+                        double total_summ = 0;
+                        for (int i = 0; i < 5; i++)
+                            total_summ += Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Avarage = {0}", total_summ / 5);
+                    }
+                    break;
+
+                case 6:
+                    {
+                        Console.WriteLine("5 numbers: ");
+                        double total_summ = 0;
+                        int buffer = 0;
+                        for (int i = 0; i < 5; i++)
+                        {
+                            buffer = Rand.Next(-100, 101);
+                            Console.WriteLine(buffer);
+                            total_summ += buffer;
+                        }
+                        Console.WriteLine("Avarage = {0}", total_summ / 5);
+                    }
+                    break;
+
+                case 7: int gooses = 2;
+                    int rabbits = 15;
+                    while (rabbits > 0)
+                    {
+                        Console.WriteLine("{0} gooses and {1} rabbits. Debug: {2} legs.", gooses, rabbits, gooses * 2 + rabbits * 4);
+                        gooses += 2;
+                        rabbits -= 1;
+                    }
+                    break;
+
+                case 8: Console.WriteLine("Enter password:");
+                    while(Console.ReadLine() != "root")
+                    {
+                        Console.WriteLine("Invalid password!\nTry again: ");
+                    }
+                    Console.WriteLine("Password correct!");
                     break;
 
                 default: Console.WriteLine("Wrong exercise number!");
